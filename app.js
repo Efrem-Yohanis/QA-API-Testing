@@ -164,3 +164,18 @@ app.put('/api/v1/house/:id',(req,res)=>{
    }
 })
 
+
+
+
+app.get('/api/v1/getAllHouseLocation',(req,res)=>{
+   let houses =[];
+
+   db.collection('house').find().forEach(element => {
+      houses.push(element.location)
+   }).then(()=>{
+      res.status(200).json(houses)
+   }).catch(()=>{
+      res.status(500).json({error:'sorry could not fetch the data'})
+   })
+  
+})
