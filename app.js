@@ -1,14 +1,23 @@
 const express = require('express')
 const {connectToDb,getDb} = require('./db')
 const {ObjectId} = require('mongodb')
+
+const cors = require('cors');
+
+
+
+
+
+
 const app = express()
 app.use(express.json())
+app.use(cors());
 // db connection 
 let db;
 
 connectToDb((error)=>{
    if(!error){
-    app.listen(3000,()=>{
+    app.listen(4000,()=>{
         console.log("app running ....")
     })
     db=getDb()
